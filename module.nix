@@ -148,6 +148,11 @@ in
                 let
                   eval = builtins.tryEval targetPkgs.${name};
                   kernel = eval.value;
+                  notBroken =
+                    let
+                      r = builtins.tryEval (!(kernel.meta.broken or false));
+                    in
+                    r.success && r.value;
                   maxOk =
                     entry.maxKernelVersion == ""
                     || lib.versionOlder kernel.version entry.maxKernelVersion;
@@ -168,6 +173,7 @@ in
                 in
                 if
                   eval.success
+                  && notBroken
                   && lib.versionAtLeast kernel.version entry.minKernelVersion
                   && maxOk
                   && lib.meta.availableOn { system = targetSystem; } kernel
