@@ -1,0 +1,28 @@
+name: CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/determinate-nix-action@v3
+      - run: nix flake check --no-build
+      - run: |
+          cd example
+          nix flake lock --override-input kmod-ci path:..
+          nix -L flake check
+
+  build-example:
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/determinate-nix-action@v3
+      - run: |
+          cd example
+          nix flake lock --override-input kmod-ci path:..
+          nix -L build
