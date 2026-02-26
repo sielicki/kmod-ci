@@ -8,6 +8,8 @@ nix flake init -t github:sielicki/kmod-ci
 
 See [`example/`](example/) for a working end-to-end reference and [`module.nix`](module.nix) for all available options.
 
+I dogfood this in [sielicki/tbs5930-driver](https://github.com/sielicki/tbs5930-driver).
+
 ## Options
 
 ### Core
