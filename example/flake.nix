@@ -20,7 +20,6 @@
             minKernelVersion = "6.6";
             excludeKernels = [ "linux_testing" ];
             moduleName = "hello";
-            enableNixosModule = true;
             # enableVMTest = true;      # requires KVM
             # crossSystems = [ "aarch64-multiplatform" ];
           };

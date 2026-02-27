@@ -42,7 +42,7 @@ let
       };
       overlay = mkOption {
         type = types.bool;
-        default = false;
+        default = true;
         description = "Auto-generate a linuxKernel.packagesFor overlay.";
       };
       defaultKernel = mkOption {
@@ -82,7 +82,7 @@ let
       };
       enableNixosModule = mkOption {
         type = types.bool;
-        default = false;
+        default = true;
         description = "Generate flake.nixosModules.<name> for this entry.";
       };
       crossSystems = mkOption {

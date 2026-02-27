@@ -22,13 +22,14 @@
             # requiredKernelConfig = [ "NET" "NETFILTER" ];  # uses IFD
             # moduleName = "my_kmod";
             # enableDevShell = true;       # enabled by default
+            # enableNixosModule = true;    # enabled by default
+            # overlay = true;             # enabled by default
             # enableVMTest = true;         # requires KVM
             # testScript = ''
             #   machine.wait_for_unit("multi-user.target")
             #   machine.succeed("modprobe my_kmod")
             #   machine.succeed("lsmod | grep -q my_kmod")
             # '';
-            # enableNixosModule = true;    # generates flake.nixosModules.my-kmod
             # crossSystems = [ "aarch64-multiplatform" ];
           };
         };
